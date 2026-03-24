@@ -8,8 +8,8 @@
           }
 
         header {
-            background-color: #333;
-            color: white;
+            background-color: #b8b8b8;
+            color: black;
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -32,8 +32,16 @@
             font-size: 20px;
         }
 
+        .company-name {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(255, 0, 0);
+            letter-spacing: 8px;
+        }
+
         nav a {
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             margin-left: 30px;
             font-size: 16px;
@@ -44,7 +52,7 @@
         }
 
         nav a.active {
-          color: rgb(176, 176, 176);
+          color: rgb(0, 0, 0);
           padding-bottom: 3px;
           font-weight: bold;
         }
