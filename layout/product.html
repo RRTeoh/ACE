@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service</title>
-    <link rel="stylesheet" href="navigation.css">
+    <title>Product</title>
+    <link rel="stylesheet" href="blacknavi.css">
     <link rel="stylesheet" href="service.css">
     
 </head>
@@ -19,15 +19,15 @@
         <nav>
             <a href="homepage.html" >Home </a>
             <div class="dropdown">
-                <a href="service.html" class="active">Services</a>
+                <a href="#" class="active">Services</a>
                 <div class="dropdown-content">
-                    <a href="product.html">Product & Sample</a>
+                    <a href="product.html" class="active">Product & Sample</a>
                     <a href="machine.html">Moulding Machines</a>
                     <a href="equipment.html">Other Equipment</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="about.html">About Us</a>
+                <a href="#">About Us</a>
                 <div class="dropdown-content">
                     <a href="#">Qualifications</a>
                     <a href="#">Partners</a>
@@ -39,40 +39,7 @@
 
     <!-- Main Content -->
     <main>
-    <section class="hero">
-        <img src="../asset/pic2.jpg" class="hero-image">
-
-        <div class="hero-content">
-            <p class = "float-up">At here, we provide and produce wide range of products.</p>
-        </div>
-    </section>
-
-    <section class="service">
-        <h2 class ="service-title float-up">What We Offer</h2>
-        <div class="service-cards">
-            <a href="#" class="service-card float-up">
-                <img src="../asset/pic3.jpg" class="service-logo">
-                <div class="service-description">
-                    <h3>Product</h3>
-                    <p>We provide plastic moulding services for various industries, including automotive, consumer goods, and packaging. Our state-of-the-art facilities and experienced team ensure high-quality products that meet your specifications.</p>
-                </div>
-            </a>
-            <a href="#" class="service-card float-up">
-                <img src="../asset/pic4.jpg" class="service-logo">
-                <div class="service-description">
-                    <h3>Machine</h3>
-                    <p>We offer comprehensive machines services to help you evaluate our products before making a purchase. Our team works closely with you to ensure that the samples meet your requirements and expectations.</p>
-                </div>
-            </a>
-            <a href="#" class="service-card float-up">
-                <img src="../asset/pic5.jpg" class="service-logo">
-                <div class="service-description">
-                    <h3>Quality Assurance</h3>
-                    <p>We also provide a wide range of other equipment for plastic moulding and related industries. Our equipment is designed to meet the highest standards of quality and performance.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    <div id="product-grid" class="product-grid"></div>
     </main>
 
     <!-- Footer -->
@@ -147,6 +114,31 @@ window.addEventListener("scroll", function () {
         header.classList.remove("fixed");
     }
 });
+</script>
+
+<script>
+fetch('product.json')
+  .then(response => response.json())
+  .then(data => {
+    const grid = document.getElementById('product-grid');
+
+    data.forEach(product => {
+      const card = document.createElement('div');
+      card.classList.add('product-card');
+
+      card.innerHTML = `
+        <img src="${product.image}" class="product-image">
+        <div class="product-content">
+          <h3>${product.title}</h3>
+          <p><strong>Material:</strong> ${product.material}</p>
+          <p>${product.description}</p>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  })
+  .catch(error => console.error('Error loading products:', error));
 </script>
 
 </body>

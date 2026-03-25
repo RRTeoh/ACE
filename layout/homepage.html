@@ -12,7 +12,7 @@
 <body>
 
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <div class="logo">
           <div class = "company-name">APM</div>
         </div>
@@ -20,7 +20,7 @@
         <nav>
             <a href="homepage.html" class="active">Home </a>
             <div class="dropdown">
-                <a href="#">Services</a>
+                <a href="service.html">Services</a>
                 <div class="dropdown-content">
                     <a href="#">Product & Sample</a>
                     <a href="#">Moulding Machines</a>
@@ -192,6 +192,18 @@
   }
   window.addEventListener('scroll', onScrollFloatUp);
   window.addEventListener('DOMContentLoaded', onScrollFloatUp);
+</script>
+
+<script>
+const header = document.getElementById("mainHeader");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 100) { // adjust threshold
+        header.classList.add("fixed");
+    } else {
+        header.classList.remove("fixed");
+    }
+});
 </script>
 
 </body>
