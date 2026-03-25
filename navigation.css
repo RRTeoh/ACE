@@ -1,0 +1,139 @@
+body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+          }
+
+        header {
+            background: transparent;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;   /* or fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 10;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .company-name {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 40px;
+            font-weight: bolder;
+            color: rgb(255, 75, 75);
+            letter-spacing: 8px;
+            padding-left: 50%;
+            padding-top: 30%;
+        }
+
+        .company-name-full {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12px;
+            color: rgb(255, 75, 75);
+            letter-spacing: 2px;
+            padding-top: 0px;
+            text-align: center;
+        }
+
+        nav a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            margin-left: 20px;
+            margin-right: 40px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        nav a.active {
+          color: rgb(255, 255, 255);
+          padding-bottom: 3px;
+          font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* hidden menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.154);
+            min-width: 180px;
+            top: 100%;
+            left: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+            z-index: 100;
+            border-radius: 5px;
+        }
+
+        /* links inside dropdown */
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        /* hover effect */
+        .dropdown-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position:relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1; /* takes up remaining space */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
