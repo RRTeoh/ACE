@@ -7,59 +7,7 @@
             box-sizing: border-box;
           }
 
-        header {
-            background: transparent;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            position: absolute;   /* or fixed */
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: transparent;
-            z-index: 10;
-        }
-
-
-        .logo {
-          display: flex;
-          align-items: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-        }
-
-        .company-name {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 40px;
-            font-weight: bolder;
-            color: rgb(255, 75, 75);
-            letter-spacing: 8px;
-            padding-left: 50%;
-            padding-top: 30%;
-        }
-
-        nav a {
-            color: rgb(255, 255, 255);
-            text-decoration: none;
-            margin-left: 20px;
-            margin-right: 40px;
-            font-size: 18px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        nav a.active {
-          color: rgb(255, 255, 255);
-          padding-bottom: 3px;
-          font-weight: bold;
-        }
+        
 
         .hero {
             position: relative;
@@ -69,6 +17,7 @@
             justify-content: center;
             align-items: center;
         }
+        
 
 
 
@@ -126,21 +75,14 @@
             text-decoration: none;
             font-family: "Times New Roman", serif;
             font-size: 20px;
+            transition: all 0.3s ease;
             border-radius: 5px;   /* slightly rounded, remove if want sharp rectangle */
         }
 
         .hero-btn:hover {
             background-color: rgb(67, 105, 255);
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            position:relative;
-            bottom: 0;
-            width: 100%;
+            transform: translateY(-5px);   /* move up */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* shadow for depth */
         }
 
         html, body {
@@ -158,9 +100,57 @@
             flex: 1; /* takes up remaining space */
         }
 
-        footer {
-            background-color: #333;
-            color: white;
+        .value {
+            padding: 30px 20px;
             text-align: center;
-            padding: 15px;
+            background-color: rgb(255, 255, 255);
         }
+
+        .value-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* GRID layout */
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* shadow for depth */
+        }
+
+        /* individual cards */
+        .value-card {
+            background-color: #e2e2e2;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-family: "Times New Roman", serif;
+            transition: 0.3s;
+            font-size: 20px;
+            display: flex;
+            justify-content: center; /* horizontal center */
+            align-items: center;     /* vertical center */
+            text-align: center;
+        }
+
+        /* ==== Animations ==== */
+        .float-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .float-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
