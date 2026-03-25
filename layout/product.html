@@ -142,7 +142,9 @@ window.addEventListener("scroll", function () {
 </script>
 
 <script>
-    fetch('products.json')
+    const modal = document.getElementById("product-modal");
+
+fetch('products.json')
   .then(response => response.json())
   .then(data => {
     const grid = document.getElementById('product-grid');
@@ -160,44 +162,29 @@ window.addEventListener("scroll", function () {
         </div>
       `;
 
+      // ✅ Click event INSIDE loop
+      card.addEventListener("click", () => {
+        document.getElementById("modal-image").src = product.image;
+        document.getElementById("modal-title").textContent = product.title;
+        document.getElementById("modal-material").textContent = product.material;
+        document.getElementById("modal-description").textContent = product.description;
+        document.getElementById("modal-more").textContent = product.more || "";
+
+        modal.style.display = "block";
+      });
+
       grid.appendChild(card);
     });
   })
   .catch(error => console.error('Error loading products:', error));
-const modal = document.getElementById("product-modal");
 
-data.forEach(product => {
-  const card = document.createElement('div');
-  card.classList.add('product-card');
 
-  card.innerHTML = `
-    <img src="${product.image}" class="product-image">
-    <div class="product-content">
-      <h3>${product.title}</h3>
-      <p><strong>Material:</strong> ${product.material}</p>
-      <p>${product.description}</p>
-    </div>
-  `;
-
-  // 👉 Click event
-  card.addEventListener("click", () => {
-    document.getElementById("modal-image").src = product.image;
-    document.getElementById("modal-title").textContent = product.title;
-    document.getElementById("modal-material").textContent = product.material;
-    document.getElementById("modal-description").textContent = product.description;
-    document.getElementById("modal-more").textContent = product.more || "";
-
-    modal.style.display = "block";
-  });
-
-  grid.appendChild(card);
-});
-
+// ✅ Close modal
 document.querySelector(".close-btn").onclick = function () {
   modal.style.display = "none";
 };
 
-// click outside to close
+// ✅ Click outside to close
 window.onclick = function (e) {
   if (e.target === modal) {
     modal.style.display = "none";
