@@ -93,6 +93,28 @@
 
   </div>
   </footer>
+  <div id="product-modal" class="modal">
+  <div class="modal-content">
+    
+    <span class="close-btn">&times;</span>
+
+    <div class="modal-body">
+      <!-- Left: Image -->
+      <div class="modal-left">
+        <img id="modal-image" src="">
+      </div>
+
+      <!-- Right: Info -->
+      <div class="modal-right">
+        <h2 id="modal-title"></h2>
+        <p><strong>Material:</strong> <span id="modal-material"></span></p>
+        <p id="modal-description"></p>
+        <p id="modal-more"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <script>
   function onScrollFloatUp() {
@@ -120,29 +142,48 @@ window.addEventListener("scroll", function () {
 </script>
 
 <script>
-fetch('product.json')
-  .then(response => response.json())
-  .then(data => {
-    const grid = document.getElementById('product-grid');
+const modal = document.getElementById("product-modal");
 
-    data.forEach(product => {
-      const card = document.createElement('div');
-      card.classList.add('product-card');
+data.forEach(product => {
+  const card = document.createElement('div');
+  card.classList.add('product-card');
 
-      card.innerHTML = `
-        <img src="${product.image}" class="product-image">
-        <div class="product-content">
-          <h3>${product.title}</h3>
-          <p><strong>Material:</strong> ${product.material}</p>
-          <p>${product.description}</p>
-        </div>
-      `;
+  card.innerHTML = `
+    <img src="${product.image}" class="product-image">
+    <div class="product-content">
+      <h3>${product.title}</h3>
+      <p><strong>Material:</strong> ${product.material}</p>
+      <p>${product.description}</p>
+    </div>
+  `;
 
-      grid.appendChild(card);
-    });
-  })
-  .catch(error => console.error('Error loading products:', error));
+  // 👉 Click event
+  card.addEventListener("click", () => {
+    document.getElementById("modal-image").src = product.image;
+    document.getElementById("modal-title").textContent = product.title;
+    document.getElementById("modal-material").textContent = product.material;
+    document.getElementById("modal-description").textContent = product.description;
+    document.getElementById("modal-more").textContent = product.more || "";
+
+    modal.style.display = "block";
+  });
+
+  grid.appendChild(card);
+});
+
+document.querySelector(".close-btn").onclick = function () {
+  modal.style.display = "none";
+};
+
+// click outside to close
+window.onclick = function (e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
 </script>
+
+
 
 </body>
 </html>

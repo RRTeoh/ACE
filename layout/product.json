@@ -3,12 +3,14 @@
     "title": "Product A",
     "image": "../asset/pic1.jpg",
     "material": "ABS, PP",
-    "description": "High-quality moulded plastic product for industrial use."
+    "description": "High-quality moulded plastic product for industrial use.",
+    "more": "Extra detailed information about the product..."
   },
   {
     "title": "Product B",
     "image": "../asset/pic2.jpg",
     "material": "PVC",
-    "description": "Durable and flexible product suitable for packaging."
+    "description": "Durable and flexible product suitable for packaging.",
+    "more": "Extra detailed information about the product..."
   }
 ]

@@ -53,3 +53,57 @@
         .product-content h3 {
             margin: 0 0 10px;
         }
+
+        /* Background overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Main box */
+.modal-content {
+    background: #fff;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Layout */
+.modal-body {
+    display: flex;
+}
+
+/* Left image */
+.modal-left {
+    flex: 1;
+}
+
+.modal-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Right content */
+.modal-right {
+    flex: 1;
+    padding: 20px;
+}
