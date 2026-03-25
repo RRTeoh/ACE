@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
     <link rel="stylesheet" href="blacknavi.css">
-    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="machine.css">
     
 </head>
 <body>
@@ -19,10 +19,10 @@
         <nav>
             <a href="homepage.html" >Home </a>
             <div class="dropdown">
-                <a href="#" class="active">Services</a>
+                <a href="service.html" class="active">Services</a>
                 <div class="dropdown-content">
-                    <a href="product.html" class="active">Product & Sample</a>
-                    <a href="machine.html">Moulding Machines</a>
+                    <a href="product.html" >Product & Sample</a>
+                    <a href="machine.html" class="active">Moulding Machines</a>
                     <a href="equipment.html">Other Equipment</a>
                 </div>
             </div>
@@ -39,9 +39,18 @@
 
     <!-- Main Content -->
     <main>
-        <section class="product">
-            <h2 class ="product-title float-up">Our Products</h2>
-            <div id="product-grid" class="product-grid float-up"></div>
+        <section class="machine">
+            <h2 class ="machine-title float-up">Our Moulding Machines</h2>
+            <table class="my-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+            </table>
         </section>
     </main>
 
@@ -93,29 +102,6 @@
 
   </div>
   </footer>
-  
-  <div id="product-modal" class="modal">
-  <div class="modal-content">
-    
-    <span class="close-btn">&times;</span>
-
-    <div class="modal-body">
-      <!-- Left: Image -->
-      <div class="modal-left">
-        <img id="modal-image" src="">
-      </div>
-
-      <!-- Right: Info -->
-      <div class="modal-right">
-        <h2 id="modal-title"></h2>
-        <p><strong>Material:</strong> <span id="modal-material"></span></p>
-        <p id="modal-description"></p>
-        <p id="modal-more"></p>
-      </div>
-    </div>
-
-  </div>
-</div>
 
     <script>
   function onScrollFloatUp() {
@@ -143,54 +129,23 @@ window.addEventListener("scroll", function () {
 </script>
 
 <script>
-    const modal = document.getElementById("product-modal");
-
-fetch('product.json')
-  .then(response => response.json())
+fetch('data.json')
+  .then(res => res.json())
   .then(data => {
-    const grid = document.getElementById('product-grid');
+    const tbody = document.getElementById('table-body');
 
-    data.forEach(product => {
-      const card = document.createElement('div');
-      card.classList.add('product-card');
+    data.forEach(item => {
+      const row = document.createElement('tr');
 
-      card.innerHTML = `
-        <img src="${product.image}" class="product-image">
-        <div class="product-content">
-          <h3>${product.title}</h3>
-          <p><strong>Material:</strong> ${product.material}</p>
-          <p>${product.description}</p>
-        </div>
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.age}</td>
+        <td>${item.role}</td>
       `;
 
-      // ✅ Click event INSIDE loop
-      card.addEventListener("click", () => {
-        document.getElementById("modal-image").src = product.image;
-        document.getElementById("modal-title").textContent = product.title;
-        document.getElementById("modal-material").textContent = product.material;
-        document.getElementById("modal-description").textContent = product.description;
-        document.getElementById("modal-more").textContent = product.more || "";
-
-        modal.style.display = "block";
-      });
-
-      grid.appendChild(card);
+      tbody.appendChild(row);
     });
-  })
-  .catch(error => console.error('Error loading products:', error));
-
-
-// ✅ Close modal
-document.querySelector(".close-btn").onclick = function () {
-  modal.style.display = "none";
-};
-
-// ✅ Click outside to close
-window.onclick = function (e) {
-  if (e.target === modal) {
-    modal.style.display = "none";
-  }
-};
+  });
 </script>
 
 
