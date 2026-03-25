@@ -1,17 +1,38 @@
 [
   { 
-    "name": "John", 
-    "age": 25, 
-    "role": "Engineer" 
+    "ton": "450 Ton", 
+    "set": 2 
   },
   { 
-    "name": "Alice", 
-    "age": 30, 
-    "role": "Manager" 
+    "ton": "220 ~ 280 Ton", 
+    "set": 2
   },
   { 
-    "name": "Mary", 
-    "age": 28, 
-    "role": "Designer" 
+    "ton": "180 ~ 200 Ton", 
+    "set": 4 
+  }
+  { 
+    "ton": "140 ~ 170 Ton", 
+    "set": 2 
+  },
+  { 
+    "ton": "100 ~ 130 Ton", 
+    "set": 2
+  },
+  { 
+    "ton": "80 ~ 90 Ton", 
+    "set": 4 
+  }
+  { 
+    "ton": "35 ~70 Ton", 
+    "set": 2 
+  },
+  { 
+    "ton": "280 Ton (2K Injection Moulding Machine) ", 
+    "set": 2
+  },
+  { 
+    "ton": "85 Ton (Vertical Injection Molding Machine)", 
+    "set": 4 
   }
 ]
