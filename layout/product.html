@@ -142,6 +142,28 @@ window.addEventListener("scroll", function () {
 </script>
 
 <script>
+    fetch('products.json')
+  .then(response => response.json())
+  .then(data => {
+    const grid = document.getElementById('product-grid');
+
+    data.forEach(product => {
+      const card = document.createElement('div');
+      card.classList.add('product-card');
+
+      card.innerHTML = `
+        <img src="${product.image}" class="product-image">
+        <div class="product-content">
+          <h3>${product.title}</h3>
+          <p><strong>Material:</strong> ${product.material}</p>
+          <p>${product.description}</p>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  })
+  .catch(error => console.error('Error loading products:', error));
 const modal = document.getElementById("product-modal");
 
 data.forEach(product => {
