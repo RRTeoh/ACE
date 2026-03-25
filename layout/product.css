@@ -12,32 +12,42 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 300px); /* 3 fixed columns */
-            gap: 20px;
-            justify-content: center; /* center the grid */
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
+        
+
         .product-card {
-            width: 300px;
-            height: 400px; /* fixed height */
+           width: 300px;              /* adjust as needed */
             background: #fff;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 
             display: flex;
-            flex-direction: column;
+            flex-direction: column;    /* key: stack vertically */
+            text-decoration: none;  /* removes underline */
+            color: inherit;        /* keeps text color normal */
         }
 
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* shadow for depth */
+        }
+
+        /* Image on top */
         .product-image {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
 
+        /* Text content */
         .product-content {
             padding: 15px;
-            font-family: "Times New Roman", Times, serif;
         }
 
         .product-content h3 {
