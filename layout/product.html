@@ -144,7 +144,7 @@ window.addEventListener("scroll", function () {
 <script>
     const modal = document.getElementById("product-modal");
 
-fetch('products.json')
+fetch('product.json')
   .then(response => response.json())
   .then(data => {
     const grid = document.getElementById('product-grid');
