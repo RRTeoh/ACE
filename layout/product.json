@@ -1,16 +1,86 @@
 [
   {
     "title": "Product A",
-    "image": "../asset/pic1.jpg",
+    "image": "../asset/pic3.jpg",
     "material": "ABS, PP",
     "description": "High-quality moulded plastic product for industrial use.",
     "more": "Extra detailed information about the product..."
   },
   {
     "title": "Product B",
-    "image": "../asset/pic2.jpg",
+    "image": "../asset/pic3.jpg",
     "material": "PVC",
     "description": "Durable and flexible product suitable for packaging.",
     "more": "Extra detailed information about the product..."
+  },
+  {
+    "title": "Product C",
+    "image": "../asset/pic3.jpg",
+    "material": "HDPE",
+    "description": "Lightweight and durable plastic component suitable for industrial applications.",
+    "more": "Designed for high resistance against impact and environmental stress."
+  },
+  {
+    "title": "Product D",
+    "image": "../asset/pic3.jpg",
+    "material": "LDPE",
+    "description": "Flexible plastic product ideal for packaging and storage solutions.",
+    "more": "Offers excellent moisture resistance and sealing performance."
+  },
+  {
+    "title": "Product E",
+    "image": "../asset/pic3.jpg",
+    "material": "PET",
+    "description": "Transparent and strong plastic commonly used for containers.",
+    "more": "Provides high clarity and is suitable for food-grade applications."
+  },
+  {
+    "title": "Product F",
+    "image": "../asset/pic3.jpg",
+    "material": "Nylon",
+    "description": "High-strength engineering plastic for precision components.",
+    "more": "Known for excellent wear resistance and mechanical strength."
+  },
+  {
+    "title": "Product G",
+    "image": "../asset/pic3.jpg",
+    "material": "Polycarbonate",
+    "description": "Impact-resistant plastic suitable for protective equipment.",
+    "more": "Offers high transparency and excellent durability."
+  },
+  {
+    "title": "Product H",
+    "image": "../asset/pic3.jpg",
+    "material": "ABS",
+    "description": "Versatile plastic used in automotive and consumer goods.",
+    "more": "Provides a good balance of strength, rigidity, and appearance."
+  },
+  {
+    "title": "Product I",
+    "image": "../asset/pic3.jpg",
+    "material": "PP",
+    "description": "Cost-effective plastic for mass production components.",
+    "more": "Resistant to chemicals and suitable for repeated use."
+  },
+  {
+    "title": "Product J",
+    "image": "../asset/pic3.jpg",
+    "material": "PS",
+    "description": "Rigid plastic commonly used for disposable products.",
+    "more": "Lightweight and easy to mold into various shapes."
+  },
+  {
+    "title": "Product K",
+    "image": "../asset/pic3.jpg",
+    "material": "TPE",
+    "description": "Flexible rubber-like plastic for soft-touch applications.",
+    "more": "Combines elasticity with durability for better performance."
+  },
+  {
+    "title": "Product L",
+    "image": "../asset/pic3.jpg",
+    "material": "Acrylic",
+    "description": "Clear plastic alternative to glass with high transparency.",
+    "more": "UV resistant and suitable for outdoor and display uses."
   }
 ]
