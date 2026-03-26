@@ -166,10 +166,12 @@ let filteredProducts = [];
 fetch('products.json')
   .then(res => res.json())
   .then(data => {
-    allProducts = data;
-    filteredProducts = data;
-    displayProducts(filteredProducts);
+    allProducts = data;          // keep all products
+    filteredProducts = data;     // filteredProducts will change with search/sort
+    displayProducts(filteredProducts); // display all at first
   });
+
+  const modal = document.getElementById("product-modal");
 
 function displayProducts(products) {
   const grid = document.getElementById('product-grid');
@@ -193,7 +195,7 @@ function displayProducts(products) {
       </div>
     `;
 
-    // ✅ Add modal click event here
+    // Add click event to open modal
     card.addEventListener("click", () => {
       document.getElementById("modal-image").src = product.image;
       document.getElementById("modal-title").textContent = product.title;
@@ -207,9 +209,7 @@ function displayProducts(products) {
     grid.appendChild(card);
   });
 }
-</script>
 
-<script>
 document.getElementById("searchInput").addEventListener("input", function () {
   const keyword = this.value.toLowerCase();
 
@@ -219,20 +219,18 @@ document.getElementById("searchInput").addEventListener("input", function () {
       (p.material && p.material.toLowerCase().includes(keyword)) ||
       (p.description && p.description.toLowerCase().includes(keyword)) ||
       (p.category && p.category.toLowerCase().includes(keyword)) ||
-      (p.more && p.more.toLowerCase().includes(keyword))  
+      (p.more && p.more.toLowerCase().includes(keyword))
     );
   });
 
-  applySort();
+  applySort(); // calls displayProducts(filteredProducts) after sorting
 });
-</script>
 
-<script>
 document.getElementById("sortSelect").addEventListener("change", applySort);
 
 function applySort() {
   const sortValue = document.getElementById("sortSelect").value;
-  let sorted = [...filteredProducts];
+  let sorted = [...filteredProducts]; // sort only filtered products
 
   if (sortValue === "name-asc") {
     sorted.sort((a, b) => a.title.localeCompare(b.title));
@@ -245,9 +243,6 @@ function applySort() {
   }
 
   displayProducts(sorted);
-
-  // 🔥 DEBUG
-  console.log("Showing products:", sorted.length);
 }
 </script>
 
