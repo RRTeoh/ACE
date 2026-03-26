@@ -66,6 +66,7 @@ body {
             letter-spacing: 8px;
             padding-left: 50%;
             padding-top: 5%;
+            text-decoration: none;
         }
 
         .company-name-full {
@@ -83,6 +84,7 @@ body {
             margin-left: 20px;
             margin-right: 40px;
             font-size: 18px;
+            font-family: "Times New Roman", Times, serif;
         }
 
         nav a:hover {
