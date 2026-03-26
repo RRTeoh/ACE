@@ -107,3 +107,16 @@
     flex: 1;
     padding: 20px;
 }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.controls input,
+.controls select {
+    padding: 8px 12px;
+    font-size: 14px;
+}

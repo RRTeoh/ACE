@@ -19,9 +19,9 @@
         <nav>
             <a href="homepage.html" >Home </a>
             <div class="dropdown">
-                <a href="#" class="active">Services</a>
+                <a href="service.html" class="active">Services</a>
                 <div class="dropdown-content">
-                    <a href="product.html" class="active">Product & Sample</a>
+                    <a href="services.html" class="active">Product & Sample</a>
                     <a href="machine.html">Moulding Machines</a>
                     <a href="equipment.html">Other Equipment</a>
                 </div>
@@ -41,6 +41,20 @@
     <main>
         <section class="product">
             <h2 class ="product-title float-up">Our Products</h2>
+            <div class="controls">
+
+  <!-- Search -->
+  <input type="text" id="searchInput" placeholder="Search products...">
+
+  <!-- Sort -->
+  <select id="sortSelect">
+    <option value="default">Sort By</option>
+    <option value="name-asc">Name (A-Z)</option>
+    <option value="name-desc">Name (Z-A)</option>
+    <option value="material">Material</option>
+  </select>
+
+</div>
             <div id="product-grid" class="product-grid float-up"></div>
         </section>
     </main>
@@ -193,6 +207,74 @@ window.onclick = function (e) {
 };
 </script>
 
+<script>
+let allProducts = [];
+let filteredProducts = [];
+
+fetch('products.json')
+  .then(res => res.json())
+  .then(data => {
+    allProducts = data;
+    filteredProducts = data;
+    displayProducts(filteredProducts);
+  });
+
+function displayProducts(products) {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = "";
+
+  products.forEach(product => {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+
+    card.innerHTML = `
+      <img src="${product.image}" class="product-image">
+      <div class="product-content">
+        <h3>${product.title}</h3>
+        <p><strong>Material:</strong> ${product.material}</p>
+        <p>${product.description}</p>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+</script>
+
+<script>
+document.getElementById("searchInput").addEventListener("input", function () {
+  const keyword = this.value.toLowerCase();
+
+  filteredProducts = allProducts.filter(p =>
+    p.title.toLowerCase().includes(keyword) ||
+    p.material.toLowerCase().includes(keyword) ||
+    p.description.toLowerCase().includes(keyword)
+  );
+
+  applySort();
+});
+</script>
+
+<script>
+document.getElementById("sortSelect").addEventListener("change", applySort);
+
+function applySort() {
+  const sortValue = document.getElementById("sortSelect").value;
+  let sorted = [...filteredProducts]; // copy array
+
+  if (sortValue === "name-asc") {
+    sorted.sort((a, b) => a.title.localeCompare(b.title));
+  } 
+  else if (sortValue === "name-desc") {
+    sorted.sort((a, b) => b.title.localeCompare(a.title));
+  } 
+  else if (sortValue === "material") {
+    sorted.sort((a, b) => a.material.localeCompare(b.material));
+  }
+
+  displayProducts(sorted);
+}
+</script>
 
 
 </body>
