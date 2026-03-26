@@ -227,9 +227,9 @@ document.getElementById("searchInput").addEventListener("input", function () {
 
   const filtered = injectionData.filter(item =>
     item.name.toLowerCase().includes(keyword) ||
-    item.brand_origin.toLowerCase().includes(keyword) ||
-    item.brand.toLowerCase().includes(keyword) ||
-    item.remark.toLowerCase().includes(keyword)
+    item.Origin.toLowerCase().includes(keyword) ||
+    item.Brand.toLowerCase().includes(keyword) ||
+    item.Remark.toLowerCase().includes(keyword)
   );
 
   renderTable(filtered);
@@ -240,14 +240,14 @@ document.getElementById("sortSelect").addEventListener("change", function () {
   let sorted = [...injectionData];
 
   if (value === "origin") {
-    sorted.sort((a, b) => a.brand_origin.localeCompare(b.brand_origin));
+    sorted.sort((a, b) => a.Origin.localeCompare(b.Origin));
   } 
   else if (value === "brand") {
-    sorted.sort((a, b) => a.brand.localeCompare(b.brand));
+    sorted.sort((a, b) => a.Brand.localeCompare(b.Brand));
   } 
   else if (value === "ton") {
     // even though it's called "ton", we sort by remark
-    sorted.sort((a, b) => a.remark.localeCompare(b.remark));
+    sorted.sort((a, b) => a.Remark.localeCompare(b.Remark));
   }
 
   renderTable(sorted);
