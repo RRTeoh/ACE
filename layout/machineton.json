@@ -13,19 +13,19 @@
   },
   { 
     "ton": "140 ~ 170 Ton", 
-    "set": 2 
+    "set": 13 
   },
   { 
     "ton": "100 ~ 130 Ton", 
-    "set": 2
+    "set": 12
   },
   { 
     "ton": "80 ~ 90 Ton", 
-    "set": 4 
+    "set": 9 
   },
   { 
     "ton": "35 ~70 Ton", 
-    "set": 2 
+    "set": 8 
   },
   { 
     "ton": "280 Ton (2K Injection Moulding Machine) ", 
@@ -33,6 +33,6 @@
   },
   { 
     "ton": "85 Ton (Vertical Injection Molding Machine)", 
-    "set": 4 
+    "set": 2 
   }
 ]
