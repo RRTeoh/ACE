@@ -190,6 +190,7 @@ function displayProducts(products) {
       <img src="${product.image}" class="product-image">
       <div class="product-content">
         <h3>${product.title}</h3>
+        <p><strong>Category:</strong> ${product.category}</p> 
         <p><strong>Material:</strong> ${product.material}</p>
         <p>${product.description}</p>
       </div>
@@ -199,6 +200,7 @@ function displayProducts(products) {
     card.addEventListener("click", () => {
       document.getElementById("modal-image").src = product.image;
       document.getElementById("modal-title").textContent = product.title;
+      document.getElementById("modal-category").textContent = product.category;
       document.getElementById("modal-material").textContent = product.material;
       document.getElementById("modal-description").textContent = product.description;
       document.getElementById("modal-more").textContent = product.more || "";
@@ -244,7 +246,23 @@ function applySort() {
 
   displayProducts(sorted);
 }
+
+
+const closeBtn = document.querySelector(".close-btn");
+
+// Close when clicking the × button
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Close when clicking outside the modal content
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
 </script>
+
 
 
 </body>
