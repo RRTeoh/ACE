@@ -39,7 +39,8 @@
         }
 
         .my-table tr:hover {
-            background: #f1f1f1;
+            background: #303030;
+            color: white;
         }
 
         .description-text {
@@ -48,4 +49,75 @@
             padding: 20px;
             text-align: left;
             font-family: "Times New Roman", Times, serif;
+        }
+
+        
+        .controls {
+            display: flex;
+            justify-content: right;
+            padding-right: 20px;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .controls input,
+        .controls select {
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        /* ==== Animations ==== */
+        .float-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .float-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .Smachine {
+            padding: 30px 20px;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .Smachine-title {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 30px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .Smachines-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .S-table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        .S-table th,
+        .S-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .S-table th {
+            background: #333;
+            color: white;
+        }
+
+        .S-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .S-table tr:hover {
+            background: #303030;
+            color: white;
         }

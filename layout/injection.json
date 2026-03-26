@@ -1,0 +1,86 @@
+[
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Kawaguchi",
+    "Quantity" : 2,
+    "Remark": "450 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Kawaguchi",
+    "Quantity" : 2,
+    "Remark": "220 ~ 280 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Kawaguchi & Nissei",
+    "Quantity" : 4,
+    "Remark": "180 ~ 200 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan/China",
+    "Brand": "Kawaguchi & Nissei & LS",
+    "Quantity" : 13,
+    "Remark": "140 ~ 170 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Sumitomo Kwawguchi & Nissei",
+    "Quantity" : 10,
+    "Remark": "100 ~ 130 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "China",
+    "Brand": "Haitian",
+    "Quantity" : 2,
+    "Remark": "100 ~ 130 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Kawaguchi / Nissei",
+    "Quantity" : 3,
+    "Remark": "80 ~ 90 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "China",
+    "Brand": "Haitian / Multitech",
+    "Quantity" : 6,
+    "Remark": "80 ~ 90 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "Japan",
+    "Brand": "Nissei",
+    "Quantity" : 2,
+    "Remark": "35 ~ 70 Ton" 
+  },
+  { 
+    "name": "Injection Moulding Machine", 
+    "Origin": "China",
+    "Brand": "Haitian",
+    "Quantity" : 6,
+    "Remark": "35 ~ 70 Ton" 
+  },
+  { 
+    "name": "Double Injection Machine", 
+    "Origin": "China & Japan",
+    "Brand": "Kawaguchi & Haitian",
+    "Quantity" : 2,
+    "Remark": "200 ~ 250 Ton" 
+  },
+  { 
+    "name": "50 ~ 80 Ton Vertical Injection Machine", 
+    "Origin": "China",
+    "Brand": "Arburg",
+    "Quantity" : 2,
+    "Remark": "85 Ton" 
+  }
+]
