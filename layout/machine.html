@@ -220,30 +220,64 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error('Error loading JSON:', err));
 
+let injectionData = []; // store original data
+
 fetch('injection.json')
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.getElementById('S-table-body');
-      if (!tbody) return console.error('Table body not found!');
+  .then(res => res.json())
+  .then(data => {
+    injectionData = data;
+    renderTable(injectionData); // initial render
+  })
+  .catch(err => console.error('Error loading JSON:', err));
 
+  function renderTable(data) {
+  const tbody = document.getElementById('S-table-body');
+  tbody.innerHTML = ""; // clear table
 
-      data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item.name}</td>
-          <td>${item.brand_origin}</td>
-          <td>${item.brand}</td>
-          <td>${item.quantity}</td>
-          <td>${item.remark}</td>
-        `;
-        tbody.appendChild(row);
-      });
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.brand_origin}</td>
+      <td>${item.brand}</td>
+      <td>${item.quantity}</td>
+      <td>${item.remark}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
 
-      totalCell.textContent = totalSet; // display total
-    })
-    .catch(err => console.error('Error loading JSON:', err));
+document.getElementById("searchInput").addEventListener("input", function () {
+  const keyword = this.value.toLowerCase();
+
+  const filtered = injectionData.filter(item =>
+    item.name.toLowerCase().includes(keyword) ||
+    item.brand_origin.toLowerCase().includes(keyword) ||
+    item.brand.toLowerCase().includes(keyword) ||
+    item.remark.toLowerCase().includes(keyword)
+  );
+
+  renderTable(filtered);
 });
 
+document.getElementById("sortSelect").addEventListener("change", function () {
+  const value = this.value;
+  let sorted = [...injectionData];
+
+  if (value === "origin") {
+    sorted.sort((a, b) => a.brand_origin.localeCompare(b.brand_origin));
+  } 
+  else if (value === "brand") {
+    sorted.sort((a, b) => a.brand.localeCompare(b.brand));
+  } 
+  else if (value === "ton") {
+    // even though it's called "ton", we sort by remark
+    sorted.sort((a, b) => a.remark.localeCompare(b.remark));
+  }
+
+  renderTable(sorted);
+});
+});
 
 </script>
 
