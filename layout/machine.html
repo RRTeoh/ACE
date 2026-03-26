@@ -102,7 +102,20 @@
   </div>
   </footer>
 
-    <script>
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.getElementById("mainHeader");
+
+  // Sticky header
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 100) {
+      header.classList.add("fixed");
+    } else {
+      header.classList.remove("fixed");
+    }
+  });
+
+  // Float-up animation
   function onScrollFloatUp() {
     document.querySelectorAll('.float-up').forEach(function(el) {
       const rect = el.getBoundingClientRect();
@@ -112,38 +125,26 @@
     });
   }
   window.addEventListener('scroll', onScrollFloatUp);
-  window.addEventListener('DOMContentLoaded', onScrollFloatUp);
-</script>
+  onScrollFloatUp(); // run once at start
 
-<script>
-const header = document.getElementById("mainHeader");
+  // Load machine data
+  fetch('machineton.json') // make sure this path is correct
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.getElementById('table-body');
+      if (!tbody) return console.error('Table body not found!');
 
-window.addEventListener("scroll", function () {
-    if (window.scrollY > 100) { // adjust threshold
-        header.classList.add("fixed");
-    } else {
-        header.classList.remove("fixed");
-    }
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.ton}</td>
+          <td>${item.set}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    })
+    .catch(err => console.error('Error loading JSON:', err));
 });
-</script>
-
-<script>
-fetch('machineton.json')
-  .then(res => res.json())
-  .then(data => {
-    const tbody = document.getElementById('table-body');
-
-    data.forEach(item => {
-      const row = document.createElement('tr');
-
-      row.innerHTML = `
-        <td>${item.ton}</td>
-        <td>${item.set}</td>
-      `;
-
-      tbody.appendChild(row);
-    });
-  });
 </script>
 
 
