@@ -252,8 +252,15 @@ document.getElementById("sortSelect").addEventListener("change", function () {
   else if (value === "ton") {
   sorted.sort((a, b) => {
     const getTon = (str) => {
-      const match = str.match(/\d+/); // extract first number
-      return match ? parseInt(match[0]) : 0;
+      if (!str) return 0;
+
+      // extract ALL numbers
+      const nums = str.match(/\d+/g);
+
+      if (!nums) return 0;
+
+      // take the FIRST number as base ton
+      return parseInt(nums[0]);
     };
 
     return getTon(a.remark) - getTon(b.remark);
