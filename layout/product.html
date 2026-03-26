@@ -43,18 +43,18 @@
             <h2 class ="product-title float-up">Our Products</h2>
             <div class="controls">
 
-  <!-- Search -->
-  <input type="text" id="searchInput" placeholder="Search products...">
+            <!-- Search -->
+            <input type="text" id="searchInput" placeholder="Search products...">
 
-  <!-- Sort -->
-  <select id="sortSelect">
-    <option value="default">Sort By</option>
-    <option value="name-asc">Name (A-Z)</option>
-    <option value="name-desc">Name (Z-A)</option>
-    <option value="material">Material</option>
-  </select>
+            <!-- Sort -->
+            <select id="sortSelect">
+            <option value="default">Sort By</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="material">Material</option>
+            </select>
 
-</div>
+            </div>
             <div id="product-grid" class="product-grid float-up"></div>
         </section>
     </main>
@@ -248,7 +248,9 @@ document.getElementById("searchInput").addEventListener("input", function () {
   filteredProducts = allProducts.filter(p =>
     p.title.toLowerCase().includes(keyword) ||
     p.material.toLowerCase().includes(keyword) ||
-    p.description.toLowerCase().includes(keyword)
+    p.description.toLowerCase().includes(keyword) ||
+    p.more.toLowerCase().includes(keyword) ||
+    p.category.toLowerCase().includes(keyword)
   );
 
   applySort();
