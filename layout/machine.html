@@ -128,22 +128,28 @@ document.addEventListener("DOMContentLoaded", () => {
   onScrollFloatUp(); // run once at start
 
   // Load machine data
-  fetch('machineton.json') // make sure this path is correct
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.getElementById('table-body');
-      if (!tbody) return console.error('Table body not found!');
+  const data = [
+  { "ton": "450 Ton", "set": 2 },
+  { "ton": "220 ~ 280 Ton", "set": 2 },
+  { "ton": "180 ~ 200 Ton", "set": 4 },
+  { "ton": "140 ~ 170 Ton", "set": 2 },
+  { "ton": "100 ~ 130 Ton", "set": 2 },
+  { "ton": "80 ~ 90 Ton", "set": 4 },
+  { "ton": "35 ~70 Ton", "set": 2 },
+  { "ton": "280 Ton (2K Injection Moulding Machine) ", "set": 2 },
+  { "ton": "85 Ton (Vertical Injection Molding Machine)", "set": 4 }
+];
 
-      data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item.ton}</td>
-          <td>${item.set}</td>
-        `;
-        tbody.appendChild(row);
-      });
-    })
-    .catch(err => console.error('Error loading JSON:', err));
+const tbody = document.getElementById('table-body');
+
+data.forEach(item => {
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${item.ton}</td>
+    <td>${item.set}</td>
+  `;
+  tbody.appendChild(row);
+});
 });
 </script>
 
