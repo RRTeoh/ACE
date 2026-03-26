@@ -2,6 +2,7 @@
             padding: 30px 20px;
             text-align: center;
             background-color: rgb(255, 255, 255);
+
         }
 
         .machine-title {
@@ -11,10 +12,15 @@
             margin-bottom: 50px;
         }
 
+        .machines-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .my-table {
             width: 50%;
             border-collapse: collapse;
-            margin: 0 auto; 
         }
 
         .my-table th,
@@ -34,4 +40,12 @@
 
         .my-table tr:hover {
             background: #f1f1f1;
+        }
+
+        .description-text {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 20px;
+            text-align: left;
+            font-family: "Times New Roman", Times, serif;
         }
