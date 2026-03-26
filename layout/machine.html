@@ -116,12 +116,6 @@
                 </tr>
             </thead>
             <tbody id="S-table-body"></tbody>
-            <tfoot>
-              <tr>
-                <td>Total</td>
-                <td id="total-set">0</td>
-              </tr>
-            </tfoot>
           </table>
             </div>
         </section>
@@ -225,7 +219,31 @@ document.addEventListener("DOMContentLoaded", () => {
       totalCell.textContent = totalSet; // display total
     })
     .catch(err => console.error('Error loading JSON:', err));
+
+fetch('injection.json')
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.getElementById('S-table-body');
+      if (!tbody) return console.error('Table body not found!');
+
+
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.brand_origin}</td>
+          <td>${item.brand}</td>
+          <td>${item.quantity}</td>
+          <td>${item.remark}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      totalCell.textContent = totalSet; // display total
+    })
+    .catch(err => console.error('Error loading JSON:', err));
 });
+
 
 </script>
 
