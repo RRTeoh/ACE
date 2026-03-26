@@ -160,106 +160,104 @@ window.addEventListener("scroll", function () {
     
 
 <script>
-let allProducts = [];
-let filteredProducts = [];
-
-fetch('product.json')
-  .then(res => res.json())
-  .then(data => {
-    allProducts = data;          // keep all products
-    filteredProducts = data;     // filteredProducts will change with search/sort
-    displayProducts(filteredProducts); // display all at first
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  let allProducts = [];
+  let filteredProducts = [];
 
   const modal = document.getElementById("product-modal");
+  const closeBtn = document.querySelector(".close-btn");
 
-function displayProducts(products) {
-  const grid = document.getElementById('product-grid');
-  grid.innerHTML = "";
+  // Close modal events
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 
-  if (products.length === 0) {
-    grid.innerHTML = "<p>No products found</p>";
-    return;
-  }
-
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.classList.add('product-card');
-
-    card.innerHTML = `
-      <img src="${product.image}" class="product-image">
-      <div class="product-content">
-        <h3>${product.title}</h3>
-        <p><strong>Category:</strong> ${product.category}</p> 
-        <p><strong>Material:</strong> ${product.material}</p>
-        <p>${product.description}</p>
-      </div>
-    `;
-
-    // Add click event to open modal
-    card.addEventListener("click", () => {
-      document.getElementById("modal-image").src = product.image;
-      document.getElementById("modal-title").textContent = product.title;
-      document.getElementById("modal-category").textContent = product.category;
-      document.getElementById("modal-material").textContent = product.material;
-      document.getElementById("modal-description").textContent = product.description;
-      document.getElementById("modal-more").textContent = product.more || "";
-
-      modal.style.display = "block";
+  // Fetch products
+  fetch('product.json')
+    .then(res => res.json())
+    .then(data => {
+      allProducts = data;
+      filteredProducts = data;
+      displayProducts(filteredProducts);
     });
 
-    grid.appendChild(card);
-  });
-}
+  // Display products
+  function displayProducts(products) {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = "";
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const keyword = this.value.toLowerCase();
+    if (products.length === 0) {
+      grid.innerHTML = "<p>No products found</p>";
+      return;
+    }
 
-  filteredProducts = allProducts.filter(p => {
-    return (
-      (p.title && p.title.toLowerCase().includes(keyword)) ||
-      (p.material && p.material.toLowerCase().includes(keyword)) ||
-      (p.description && p.description.toLowerCase().includes(keyword)) ||
-      (p.category && p.category.toLowerCase().includes(keyword)) ||
-      (p.more && p.more.toLowerCase().includes(keyword))
-    );
-  });
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.classList.add('product-card');
 
-  applySort(); // calls displayProducts(filteredProducts) after sorting
-});
+      card.innerHTML = `
+        <img src="${product.image}" class="product-image">
+        <div class="product-content">
+          <h3>${product.title}</h3>
+          <p><strong>Material:</strong> ${product.material}</p>
+          <p>${product.description}</p>
+        </div>
+      `;
 
-document.getElementById("sortSelect").addEventListener("change", applySort);
+      // Click to open modal
+      card.addEventListener("click", () => {
+        document.getElementById("modal-image").src = product.image;
+        document.getElementById("modal-title").textContent = product.title;
+        document.getElementById("modal-material").textContent = product.material;
+        document.getElementById("modal-description").textContent = product.description;
+        document.getElementById("modal-more").textContent = product.more || "";
 
-function applySort() {
-  const sortValue = document.getElementById("sortSelect").value;
-  let sorted = [...filteredProducts]; // sort only filtered products
+        modal.style.display = "block";
+      });
 
-  if (sortValue === "name-asc") {
-    sorted.sort((a, b) => a.title.localeCompare(b.title));
-  } 
-  else if (sortValue === "name-desc") {
-    sorted.sort((a, b) => b.title.localeCompare(a.title));
-  } 
-  else if (sortValue === "material") {
-    sorted.sort((a, b) => a.material.localeCompare(b.material));
+      grid.appendChild(card);
+    });
   }
 
-  displayProducts(sorted);
-}
+  // Search
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
 
+    filteredProducts = allProducts.filter(p => {
+      return (
+        (p.title && p.title.toLowerCase().includes(keyword)) ||
+        (p.material && p.material.toLowerCase().includes(keyword)) ||
+        (p.description && p.description.toLowerCase().includes(keyword)) ||
+        (p.category && p.category.toLowerCase().includes(keyword)) ||
+        (p.more && p.more.toLowerCase().includes(keyword))
+      );
+    });
 
-const closeBtn = document.querySelector(".close-btn");
+    applySort();
+  });
 
-// Close when clicking the × button
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+  // Sort
+  document.getElementById("sortSelect").addEventListener("change", applySort);
 
-// Close when clicking outside the modal content
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        modal.style.display = "none";
+  function applySort() {
+    const sortValue = document.getElementById("sortSelect").value;
+    let sorted = [...filteredProducts];
+
+    if (sortValue === "name-asc") {
+      sorted.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortValue === "name-desc") {
+      sorted.sort((a, b) => b.title.localeCompare(a.title));
+    } else if (sortValue === "material") {
+      sorted.sort((a, b) => a.material.localeCompare(b.material));
     }
+
+    displayProducts(sorted);
+  }
 });
 </script>
 
