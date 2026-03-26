@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Machine</title>
     <link rel="stylesheet" href="blacknavi.css">
     <link rel="stylesheet" href="machine.css">
     
@@ -19,11 +19,11 @@
         <nav>
             <a href="homepage.html" >Home </a>
             <div class="dropdown">
-                <a href="service.html" class="active">Services</a>
+                <a href="service.html" class="active">Our Capabilities</a>
                 <div class="dropdown-content">
-                    <a href="product.html" >Product & Sample</a>
-                    <a href="machine.html" class="active">Moulding Machines</a>
-                    <a href="equipment.html">Other Equipment</a>
+                    <a href="services.html" class="active">Services Provided</a>
+                    <a href="machine.html">Moulding Machines</a>
+                    <a href="equipment.html">Quality Assurance</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -137,9 +137,8 @@ fetch('machineton.json')
       const row = document.createElement('tr');
 
       row.innerHTML = `
-        <td>${item.name}</td>
-        <td>${item.age}</td>
-        <td>${item.role}</td>
+        <td>${item.ton}</td>
+        <td>${item.set}</td>
       `;
 
       tbody.appendChild(row);
