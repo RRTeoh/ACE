@@ -204,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${product.image}" class="product-image">
         <div class="product-content">
           <h3>${product.title}</h3>
+          <p><strong>Category:</strong> ${product.category}</p> 
           <p><strong>Material:</strong> ${product.material}</p>
           <p>${product.description}</p>
         </div>
@@ -213,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("click", () => {
         document.getElementById("modal-image").src = product.image;
         document.getElementById("modal-title").textContent = product.title;
+        document.getElementById("modal-category").textContent = product.category;
         document.getElementById("modal-material").textContent = product.material;
         document.getElementById("modal-description").textContent = product.description;
         document.getElementById("modal-more").textContent = product.more || "";
@@ -232,8 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return (
         (p.title && p.title.toLowerCase().includes(keyword)) ||
         (p.material && p.material.toLowerCase().includes(keyword)) ||
-        (p.description && p.description.toLowerCase().includes(keyword)) ||
         (p.category && p.category.toLowerCase().includes(keyword)) ||
+        (p.description && p.description.toLowerCase().includes(keyword)) ||
         (p.more && p.more.toLowerCase().includes(keyword))
       );
     });
