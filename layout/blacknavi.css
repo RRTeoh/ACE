@@ -112,7 +112,7 @@ body {
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgba(192, 192, 192, 0.154);
+            background-color: #ffffffb1;
             min-width: 180px;
             top: 100%;
             left: 0;
