@@ -163,7 +163,7 @@ window.addEventListener("scroll", function () {
 let allProducts = [];
 let filteredProducts = [];
 
-fetch('products.json')
+fetch('product.json')
   .then(res => res.json())
   .then(data => {
     allProducts = data;          // keep all products
