@@ -47,6 +47,10 @@ body {
             padding: 15px 20px;
         }
 
+        #mainHeader.fixed .dropdown-content {
+            background-color: #333333b1; /* same as header */
+        }
+
         .logo {
           display: flex;
           align-items: center;
