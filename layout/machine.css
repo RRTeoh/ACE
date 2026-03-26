@@ -34,3 +34,11 @@
         .my-table tr:hover {
             background: #f1f1f1;
         }
+
+        .my-table th:nth-child(1) {
+            width: 70%;   /* first column takes 70% of table width */
+        }
+
+        .my-table th:nth-child(2) {
+            width: 30%;   /* second column takes 30% */
+        }
