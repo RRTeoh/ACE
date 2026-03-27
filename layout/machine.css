@@ -1,7 +1,7 @@
         .machine {
-            padding: 30px 20px;
+            padding: 30px 80px;
             text-align: center;
-            background: linear-gradient(to bottom, #f4f4f4 0%, #f4f4f4 80%, #e0e0e0 100%);
+            background: linear-gradient(to bottom, #f4f4f4 0%, #e9f8ff 80%, #d3f2ff 100%);
 
         }
 
@@ -81,7 +81,7 @@
         .Smachine {
             padding: 30px 20px;
             text-align: center;
-            background-color: #e0e0e0;
+            background-color: #d3f2ff;
             
         }
 
