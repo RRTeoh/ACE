@@ -103,3 +103,7 @@
             background-color: #858585;
         }
 
+        .required {
+            color: red;
+        }
+
