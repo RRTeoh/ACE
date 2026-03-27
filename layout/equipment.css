@@ -80,3 +80,66 @@
         main {
             flex: 1; /* takes up remaining space */
         }
+
+        .general {
+            display: flex;           
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 60px;
+            gap: 25px;                /* spacing between image and text */
+        }
+
+        .general-left {
+            flex: 1;
+        }   
+
+        .general-right {
+             flex: 1; /* take up available space */
+            display: flex; /* use flex inside to align image */
+            flex-direction: column;
+            justify-content: center; /* push image to right */
+
+        }
+        
+        .heading {
+            font-family: "Times New Roman", serif;
+            font-size: 30px;
+            text-align: justify;
+            padding-right: 20px;
+            padding-bottom: 0%;
+        }
+
+
+        .text {
+            font-family: "Times New Roman", serif;
+            font-size: 20px;
+            text-align: justify;
+            padding-right: 20px;
+        }
+
+        .general-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+/* ==== Animations ==== */
+.float-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.float-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.img-animate {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.img-animate.active {
+  opacity: 1;
+  transform: scale(1);
+}

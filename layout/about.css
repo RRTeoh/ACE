@@ -149,3 +149,30 @@ body {
   opacity: 1;
   transform: scale(1);
 }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;   /* stack vertically */
+            align-items: center;      /* center everything horizontally */
+            text-align: center;
+
+            padding: 40px 60px;
+            gap: 20px;
+
+            font-family: "Times New Roman", serif;
+        }   
+
+        .org-chart h2 {
+            font-family: "Times New Roman", serif;
+            font-size: 30px;
+            text-align: center;
+            align-items: center;
+            padding-right: 20px;
+            padding-bottom: 0%;
+        }
+
+        .org-img {
+            width: 100%;
+            height: auto;
+
+        }
