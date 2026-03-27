@@ -95,10 +95,11 @@ body {
         }   
 
         .general-right {
-             flex: 1; /* take up available space */
+            flex: 1; /* take up available space */
             display: flex; /* use flex inside to align image */
             flex-direction: column;
             justify-content: center; /* push image to right */
+            gap: 0px;
 
         }
         
@@ -107,7 +108,8 @@ body {
             font-size: 30px;
             text-align: justify;
             padding-right: 20px;
-            padding-bottom: 0%;
+            padding-bottom: 0;
+            margin: 0;
         }
 
 
@@ -116,6 +118,7 @@ body {
             font-size: 20px;
             text-align: justify;
             padding-right: 20px;
+            padding-top: 0;
         }
 
         .general-image {
