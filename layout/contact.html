@@ -41,8 +41,44 @@
     <main>
     <section class="contact">
             <h2 class ="contact-title float-up">Contact Us</h2>
-            <p>We would like to hear any enquiries or requests you may have. Feel free to call or drop an email to us, we will get back to you as soon as possible.</p>
+            <div class = "contacts">
+            <div class = "left-side">
+                <p>We would like to hear any enquiries or requests you may have. Feel free to call or drop an email to us, we will get back to you as soon as possible.</p>
+                <div class = "detail-info">
+                    <h3 class = "info-heading">Adress</h3>
+                    <p>3995, Jalan Bukit Changkat, 14300 Nibong Tebal, S.P.S., Pulau Pinang, Malaysia.</p>
+                    <h3 class = "info-heading">Contact Number</h3>
+                    <p>+604-582 7882</p>
+                    <h3 class = "info-heading">Fax Number</h3>
+                    <p>+604-582 7982</p>
+                    <h3 class = "info-heading">Email Address</h3>
+                    <p>123456@gmail.com</p>
+                </div>
+            </div>
+            <div class = "right-side">
+                <section class="contact-section">
 
+                    <form id="contactForm" action="https://formspree.io/f/mykbznlg" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                    <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+                    <button type="submit">Send Message</button>
+                    </form>
+
+                    <p id="formStatus"></p>
+                </section>
+
+            </div>  
+        </div>
     </section> 
         
     </main>
