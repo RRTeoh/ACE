@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>About Us</title>
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Branches</title>
+    <link rel="stylesheet" href="branch.css">
     <link rel="stylesheet" href = "navigation.css">
     
 </head>
+
 <body>
 
     <!-- Header -->
@@ -50,21 +51,38 @@
 
     <section class ="general">
         <div class ="general-left">
-            <img src="../asset/pic1.jpg" class="general-image img-animate">
+            <img src="../asset/pic9.png" class="general-image img-animate">
         </div>
         <div class ="general-right">
+            <h2 class = "float-up heading"> Company Branches</h2>
             <p class = "float-up text">Founded with a commitment to quality and innovation, our company has grown into a trusted name in the plastic moulding industry. From humble beginnings, we have continuously expanded our capabilities by investing in advanced machinery, skilled personnel, and efficient production processes. Over the years, we have built strong partnerships with clients across various sectors, delivering reliable solutions tailored to their specific needs. Our dedication to precision, consistency, and customer satisfaction drives us to maintain high standards in every project we undertake, positioning us as a dependable partner in manufacturing excellence.</p>
         </div>
     </section>
 
-    <section class ="general">
-        <div class ="general-left">
-            <p class = "float-up text">Our company is proud to hold a range of recognized qualification certificates that reflect our commitment to quality, safety, and operational excellence. These certifications are a testament to our adherence to industry standards and best practices in manufacturing and quality management. Through continuous improvement and regular audits, we ensure that our processes meet stringent requirements, giving our clients confidence in the reliability and consistency of our products. Our certified systems reinforce our dedication to delivering high-quality solutions while maintaining professionalism and accountability in every aspect of our operations.</p>
+   <section class="map-section">
+    <h2 class="heading float-up">Our Branch Locations</h2>
+    
+    <div class="map-layout">
+        
+        <!-- LEFT: Branch List -->
+        <div class="branch-list">
+            <div class="branch-item" data-index="0">Aceplas Pte Ltd (Headquarters)</div>
+            <div class="branch-item" data-index="1">Aceplas Thailand Pte. Ltd.</div>
+            <div class="branch-item" data-index="2">Ace Engineering Plastics Sdn. Bhd.</div>
+            <div class="branch-item" data-index="3">Ace Star Plastics Sdn Bhd.</div>
+            <div class="branch-item" data-index="4">Ace Star Industries Sdn Bhd</div>
+            <div class="branch-item" data-index="5">PT Aceplas Indonesia</div>
+            <div class="branch-item" data-index="6">Aceplas Shenzhen Co. Ltd.</div>
         </div>
-        <div class ="general-right">
-            <img src="../asset/pic8.jpg" class="general-imageS img-animate">
+
+        <!-- RIGHT: Map -->
+        <div class="map-wrapper">
+            <div id="map"></div>
         </div>
-    </section>
+
+    </div>
+</section>
+
 
     </main>
 
@@ -139,6 +157,96 @@ window.addEventListener("scroll", function () {
     } else {
         header.classList.remove("fixed");
     }
+});
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const map = L.map('map').setView([5.4164, 100.3327], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Branch data
+const branches = [
+    {
+        name: "Aceplas Pte Ltd (Headquarters)",
+        coords: [1.3589806, 103.8333477],
+        info: "No.18 Sin Ming Lane, #07-16 Midview City Singapore 573960"
+    },
+    {
+        name: "Aceplas Thailand Pte. Ltd.",
+        coords: [14.0943255, 100.5893619],
+        info: "91/25-28 Moo.10, Klong Nueng, Klong Luang, Pathumthani 12120, Thailand"
+    },
+    {
+        name: "Ace Engineering Plastics Sdn. Bhd.",
+        coords: [5.2433403, 100.4792511],
+        info: "1 & 3, Lorong Serunai, Taman Jawi Light Industrial 14200 Sungai Bakap, Sebarang Perai Selatan, Penang, Malaysia"
+    },
+    {
+        name: "Ace Star Plastics Sdn Bhd.",
+        coords: [1.5298185, 103.7405382],
+        info: "4 Jalan Firma 2/2, Kawasan Perindustrian Terbau 1, 81100 Johor Bahru, Johor, Malaysia"
+    },
+    {
+        name: "Ace Star Industries Sdn Bhd",
+        coords: [3.051743, 99.3142587],
+        info: "No. 21, Jalan Rajawali 3, Bandar Puchong Jaya, 47100 Puchong, Selangor Darul Ehsan, Malaysia"
+    },
+    {
+        name: "PT Aceplas Indonesia",
+        coords: [1.1131483, 104.0574013],
+        info: "Executive Industrial Park, Blok C2 No. 15, Batam Centre - Batam Indonesia"
+    },
+    {
+        name: "Aceplas Shenzhen Co. Ltd.",
+        coords: [22.6956319, 114.0777942],
+        info: "A24 Building, Fuchengao Industrial Zone, Pinghu, Shenzhen, China P.C. 518111"
+    }
+];
+
+    const markers = [];
+
+    // Create markers
+    branches.forEach((branch, index) => {
+        const marker = L.marker(branch.coords)
+            .addTo(map)
+            .bindPopup(`<b>${branch.name}</b><br>${branch.info}`);
+
+        markers.push(marker);
+    });
+
+    // Fit all markers
+    const bounds = branches.map(b => b.coords);
+    map.fitBounds(bounds);
+
+    // Handle list click
+    const items = document.querySelectorAll(".branch-item");
+
+    items.forEach(item => {
+        item.addEventListener("click", function () {
+
+            const index = this.dataset.index;
+            const branch = branches[index];
+
+            // Highlight active item
+            items.forEach(i => i.classList.remove("active"));
+            this.classList.add("active");
+
+            // Focus map
+            map.setView(branch.coords, 15);
+
+            // Open popup
+            markers[index].openPopup();
+        });
+    });
+
 });
 </script>
 
